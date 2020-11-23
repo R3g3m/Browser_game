@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Game</title>
+</head>
+<body>
+    <div id="start-window">
+        <p>
+            <em>Инструкция к игре:</em>
+        </p>
+        <p>
+            Для передвижения используйте клавиши со стрелочками. Для использования способностей клавиши 1-4;
+        <p>
+            Описание способностей:
+        </p>     
+            <table>
+                <tr>
+                    <td>Выстрел (1):</td>
+                    <td>
+                        Игрок стреляет из лука, нанося урон ЗС перед собой.
+                        Время перезарядки: 0 сек.
+                        Количество потребляемой MP: 0.
+                        Урон: 15 ед. 
+                    </td>
+                </tr>
+                <tr>
+                    <td>Блок (2):</td>
+                    <td>Игрок выставляет щит перед собой. Щит блокирует весь урон. ЗС не могут пройти за щит.
+                        Клавиша активации: 2.
+                        Время перезарядки: 0 сек.
+                        Количество потребляемой MP: 5.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Три стрелы(3):</td>
+                    <td>Игрок выпускает три стрелы перед собой. Стрелы летят, нанося 40 единиц урона всем ЗС на своем пути.
+                        Клавиша активации: 3.
+                        Время перезарядки: 3 сек.
+                        Количество потребляемой MP: 10.
+                        Урон: 40 ед.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Град стрел (4):</td>
+                    <td>В радиусе нескольких метров от игрока на землю обрушивается град стрел, уничтожая всех, кто был в данном радиусе.
+                        Клавиша активации: 4.
+                        Время перезарядки: 15 сек.
+                        Количество потребляемой MP: 30.
+                        Урон: 100 ед.
+                    </td>
+                </tr>
+            </table>
+        </p>
+        <p>Введите имя игрока </p>
+        <input type="text" id="name" onchange="document.getElementById('start-button').disabled = false;">
+        </input>
+        <button type="button" id="start-button" disabled onclick="start()">НАЧАТЬ</button>
+    </div>
+    <canvas width="640" height="480" class="canvas" id="main-window">Ваш браузер не поддерживает JavaScript и HTML5!</canvas>
+    <div class="results" id="results" hidden>
+    <table id="highscores">
+        <thead>
+            <tr>
+                <td>Позиция</td>
+                <td>Имя</td>
+                <td>Результат</td>
+                <td>Время</td>
+            </tr>
+        </thead>
+        <tbody id="result-table">
+      
+        </tbody>
+    </table>
+    <button type="button" id="again" onclick="start()">НАЧАТЬ СНАЧАЛА</button>
+    </div>
+    <script>
+        //начальная инициализация localStorage случайными значениями лучших игроков
+        localStorage.clear();
+        for(let i = 0; i < 10; i++) {
+            localStorage.setItem(+i,"Darth Wader" + "%" + (50-getRandomInt(20)) + "^" + (8+getRandomInt(100)));
+        }
+
+        function start() {
+            let playerName = document.getElementById("name").value;
+            let main = document.getElementById("main-window");
+            main.style.display = "block"; // показываем канвас с игрой
+            let start = document.getElementById("start-window");
+            start.style.display = "none"; // скрываем начальный экран
+            let end = document.getElementById("results");
+            end.style.display = "none";   // скрываем экран с результатами
+            let resultTable = document.createElement('tbody');
+            resultTable.id = "result-table";
+            document.getElementById('result-table').replaceWith(resultTable);
+            startGame(); // запускаем игру и передаём ей имя игрока
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

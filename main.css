@@ -1,0 +1,103 @@
+body, html
+{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+ 
+.canvas
+{
+    background: #eee;
+    margin: 0 auto;
+    display: none;
+}
+
+#start-window {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+#again {
+    display: block;
+    margin: 0 auto;
+}
+#results {
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+#highscores {
+    display: flex;
+    justify-content: center;
+
+    text-align: left;
+    flex-direction: column;
+}
+
+table {
+    margin: 0 20%;
+    text-align: justify;
+    font-size: 20px;
+}
+
+tr {
+    font-weight: bold;
+}
+thead {
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#result-table {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#result-table tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 30%;
+}
+#result-table td:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    color: blue;
+}
+#result-table td:nth-child(2n) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    color: red;
+}
+#result-table td:nth-child(3n) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    color: black;
+}
+#result-table td:nth-child(4n) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    color: chocolate;
+}
